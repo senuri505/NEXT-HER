@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="50%" stop-color="#FFA500"/>
+      <stop offset="100%" stop-color="#DAA520"/>
+    </linearGradient>
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9966CC"/>
+      <stop offset="100%" stop-color="#4B0082"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Leo Emblem Circle -->
+  <g transform="translate(10, 5)">
+    <circle cx="45" cy="45" r="42" fill="url(#purpleGradient)" stroke="url(#goldGradient)" stroke-width="3" />
+    <!-- Lion Silhouette -->
+    <path d="M 32 30 C 32 24 38 20 45 20 C 52 20 58 24 58 30 C 58 34 54 38 48 40 L 48 46 L 54 48 C 60 50 64 56 64 64 L 26 64 C 26 56 30 50 36 48 L 42 46 L 42 40 C 36 38 32 34 32 30 Z" fill="url(#goldGradient)" />
+    <!-- Stars -->
+    <polygon points="45,10 47,15 52,15 48,18 50,23 45,20 40,23 42,18 38,15 43,15" fill="#FFFFFF"/>
+    <!-- LEO Text Badge -->
+    <text x="45" y="76" font-family="'Outfit', sans-serif" font-weight="900" font-size="11" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">LEO</text>
+  </g>
+
+  <!-- Typography -->
+  <g transform="translate(105, 30)">
+    <text x="0" y="16" font-family="'Outfit', 'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="18" fill="#FFFFFF" letter-spacing="1.5">LEO CLUB OF</text>
+    <text x="0" y="36" font-family="'Outfit', 'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="20" fill="url(#goldGradient)" letter-spacing="1">UNIVERSITY OF SRI JAYEWARDENEPURA</text>
+    <text x="0" y="54" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="11" fill="#C8A2C8" letter-spacing="3">DISTRICT 306 A2 • SRI LANKA</text>
+  </g>
+</svg>
