@@ -3875,6 +3875,14 @@ body {
   text-shadow: none;
 }
 
+.stat-detail {
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
 .about-lead {
   margin-bottom: 2rem;
 }
