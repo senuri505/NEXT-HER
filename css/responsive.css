@@ -57,6 +57,9 @@
   .about-grid {
     grid-template-columns: 1fr;
   }
+  .about-mvm-grid, .about-org-grid {
+    grid-template-columns: 1fr;
+  }
   .poster-pillars-grid {
     grid-template-columns: 1fr;
   }
@@ -80,7 +83,7 @@
     width: 82%;
     max-width: 320px;
     height: 100vh;
-    background: rgba(21, 1, 43, 0.96);
+    background: rgba(177, 138, 219, 0.96);
     backdrop-filter: blur(25px);
     border-left: 1px solid var(--glass-border);
     flex-direction: column;
@@ -113,6 +116,22 @@
   }
 
   /* Responsive Timeline Styling */
+  .timeline-table-wrapper {
+    margin-bottom: 2.5rem;
+  }
+  
+  .timeline-matrix-table th, .timeline-matrix-table td {
+    padding: 1rem 0.85rem;
+  }
+
+  .th-title {
+    font-size: 1rem;
+  }
+
+  .timeline-track-block {
+    padding: 1rem 1.1rem;
+  }
+
   .timeline-track, .timeline-progress-fill {
     left: 26px;
   }

@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initCounterObserver();
   initTimelineProgress();
+  initTimelineTabs();
   initFAQAccordion();
   initSmoothScroll();
   initSectionParticles();
@@ -231,16 +232,19 @@ function initScrollReveal() {
    6. Count-up Stats Observer
    -------------------------------------------------------------------------- */
 function initCounterObserver() {
-  const statNumbers = document.querySelectorAll('.stat-number');
+  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
   if (!statNumbers.length) return;
 
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const target = entry.target;
-        const targetNum = parseInt(target.getAttribute('data-target'), 10) || 0;
+        const attrVal = target.getAttribute('data-target');
+        const targetNum = parseInt(attrVal, 10);
         const suffix = target.getAttribute('data-suffix') || '';
-        animateCountUp(target, targetNum, suffix);
+        if (!isNaN(targetNum) && targetNum > 0) {
+          animateCountUp(target, targetNum, suffix);
+        }
         obs.unobserve(target);
       }
     });
@@ -295,6 +299,38 @@ function initTimelineProgress() {
         }
       });
     }
+  });
+}
+
+/* --------------------------------------------------------------------------
+   7B. Dual-Track Timeline Tab Switcher Logic
+   -------------------------------------------------------------------------- */
+function initTimelineTabs() {
+  const tabBtns = document.querySelectorAll('.timeline-tab-btn');
+  const trackBlocks = document.querySelectorAll('.timeline-track-block');
+
+  if (!tabBtns.length) return;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      trackBlocks.forEach(block => {
+        const trackType = block.getAttribute('data-track-type');
+        if (filter === 'all') {
+          block.style.display = 'block';
+        } else if (filter === 'uni' && trackType === 'uni') {
+          block.style.display = 'block';
+        } else if (filter === 'school' && trackType === 'school') {
+          block.style.display = 'block';
+        } else {
+          block.style.display = 'none';
+        }
+      });
+    });
   });
 }
 
