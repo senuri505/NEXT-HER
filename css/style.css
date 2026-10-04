@@ -423,6 +423,34 @@ img, svg {
   flex-shrink: 0;
 }
 
+.nav-project-lockup {
+  gap: 0.65rem;
+}
+
+.nav-project-logo {
+  width: 46px;
+  height: 46px;
+  max-width: none;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 8px rgba(75, 0, 130, 0.25));
+}
+
+.nav-project-name {
+  background: var(--gradient-heading);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  white-space: nowrap;
+  filter: drop-shadow(0 2px 8px rgba(106, 0, 215, 0.16));
+}
+
 .nav-partner-logo {
   display: block;
   object-fit: contain;

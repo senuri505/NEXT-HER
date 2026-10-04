@@ -398,6 +398,19 @@ iframe {
     gap: 0.65rem;
   }
 
+  .nav-project-lockup {
+    gap: 0.55rem;
+  }
+
+  .nav-project-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .nav-project-name {
+    font-size: clamp(1.15rem, 3vw, 1.4rem);
+  }
+
   .nav-partner-logos {
     min-width: 0;
     gap: clamp(0.35rem, 1vw, 0.7rem);
@@ -823,53 +836,24 @@ iframe {
   }
 
   .nav-partner-logos {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: flex;
     align-items: center;
-    justify-items: center;
-    gap: 0.2rem 0.35rem;
-    width: 100%;
-  }
-
-  .logo-nav-usj,
-  .logo-nav-d2 {
-    width: 100%;
-    height: clamp(1.45rem, 7vw, 1.8rem);
-    max-width: 1.8rem;
-    object-fit: contain;
-  }
-
-  .logo-nav-lci {
-    width: 100%;
-    height: clamp(1.45rem, 7vw, 1.8rem);
-    max-width: 1.9rem;
-    object-fit: contain;
-  }
-
-  .nav-partner-logo-cropper {
-    grid-column: span 2;
-    width: 100%;
-    height: 1.8rem;
-    max-width: 6rem;
-    justify-self: center;
-  }
-
-  .nav-partner-logo-leo-usj {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    margin: 0;
-    object-fit: contain;
-  }
-
-  .logo-nav-slm {
-    grid-column: span 2;
+    gap: 0;
     width: auto;
-    max-width: min(100%, 6rem);
-    max-height: 1.5rem;
-    height: auto;
-    justify-self: center;
-    object-fit: contain;
+  }
+
+  .nav-project-lockup {
+    gap: 0.5rem;
+  }
+
+  .nav-project-logo {
+    width: clamp(2rem, 10vw, 2.5rem);
+    height: clamp(2rem, 10vw, 2.5rem);
+  }
+
+  .nav-project-name {
+    font-size: clamp(1.05rem, 5.2vw, 1.35rem);
+    letter-spacing: 0.04em;
   }
 
   .hero-countdown-glass {
