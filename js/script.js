@@ -691,9 +691,9 @@ function initEventCountdown() {
 
   if (!cdDays || !cdHours || !cdMinutes || !cdSeconds) return;
 
-  // Target event date: October 16, 2026 09:00:00 (NEXT HER Ideathon & Launch)
+  // Target event date: October 10, 2026 00:00:00 (NEXT HER Ideathon & Launch)
   const now = new Date();
-  let targetDate = new Date('2026-10-16T09:00:00');
+  let targetDate = new Date('2026-10-10T00:00:00');
 
   // If testing or target passed, fallback to 12 days 8 hours from now
   if (targetDate.getTime() <= now.getTime()) {
