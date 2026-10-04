@@ -631,3 +631,87 @@ function initSectionParticles() {
     observer.observe(section);
   });
 }
+
+/* --------------------------------------------------------------------------
+   10. Smooth Scroll for Anchor Links
+   -------------------------------------------------------------------------- */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+
+      const targetEl = document.querySelector(targetId);
+      if (!targetEl) return;
+
+      e.preventDefault();
+
+      // Close mobile menu if open
+      const navLinks = document.querySelector('.nav-links');
+      if (navLinks && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+      }
+
+      const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 80;
+      const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - navbarHeight - 20;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   Live Event Countdown Timer
+   -------------------------------------------------------------------------- */
+function initEventCountdown() {
+  const cdDays = document.getElementById('cd-days');
+  const cdHours = document.getElementById('cd-hours');
+  const cdMinutes = document.getElementById('cd-minutes');
+  const cdSeconds = document.getElementById('cd-seconds');
+
+  if (!cdDays || !cdHours || !cdMinutes || !cdSeconds) return;
+
+  // Target event date: October 16, 2026 09:00:00 (NEXT HER Ideathon & Launch)
+  const now = new Date();
+  let targetDate = new Date('2026-10-16T09:00:00');
+
+  // If testing or target passed, fallback to 12 days 8 hours from now
+  if (targetDate.getTime() <= now.getTime()) {
+    targetDate = new Date(now.getTime() + (12 * 86400 + 8 * 3600 + 34 * 60 + 27) * 1000);
+  }
+
+  function updateCountdown() {
+    const currentTime = new Date().getTime();
+    const distance = targetDate.getTime() - currentTime;
+
+    if (distance <= 0) {
+      cdDays.textContent = '00';
+      cdHours.textContent = '00';
+      cdMinutes.textContent = '00';
+      cdSeconds.textContent = '00';
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    cdDays.textContent = String(days).padStart(2, '0');
+    cdHours.textContent = String(hours).padStart(2, '0');
+    cdMinutes.textContent = String(minutes).padStart(2, '0');
+    cdSeconds.textContent = String(seconds).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initEventCountdown);
+} else {
+  initEventCountdown();
+}
