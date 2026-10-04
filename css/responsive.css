@@ -950,10 +950,10 @@ iframe {
 @media (max-width: 768px) {
   .footer-bottom-logos {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(8, minmax(0, 1fr));
     align-items: center;
     justify-items: center;
-    gap: clamp(0.2rem, 1.3vw, 0.55rem);
+    gap: clamp(0.1rem, 0.8vw, 0.4rem);
     width: 100%;
     flex-wrap: nowrap;
   }
@@ -962,7 +962,7 @@ iframe {
     width: 100%;
     min-width: 0;
     max-width: none;
-    height: clamp(2rem, 8vw, 2.8rem);
+    height: clamp(1.5rem, 6vw, 2.6rem);
     object-fit: contain;
   }
 
@@ -970,7 +970,7 @@ iframe {
     width: 100%;
     min-width: 0;
     max-width: none;
-    height: clamp(2rem, 8vw, 2.8rem);
+    height: clamp(1.5rem, 6vw, 2.6rem);
   }
 
   .footer-bottom-logos .footer-bare-logo-leo-usj {
