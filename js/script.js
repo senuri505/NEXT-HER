@@ -90,19 +90,35 @@ function initMobileMenu() {
 
   if (!toggleBtn || !navLinks) return;
 
+  const mobileMenuQuery = window.matchMedia('(max-width: 1024px)');
+
+  function setMenuOpen(isOpen) {
+    navLinks.classList.toggle('active', isOpen);
+    navLinks.setAttribute('aria-hidden', String(mobileMenuQuery.matches && !isOpen));
+    navLinks.inert = mobileMenuQuery.matches && !isOpen;
+    toggleBtn.setAttribute('aria-expanded', String(isOpen));
+    toggleBtn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    toggleBtn.textContent = isOpen ? '✕' : '☰';
+  }
+
+  setMenuOpen(false);
+
   toggleBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    const isExpanded = navLinks.classList.contains('active');
-    toggleBtn.setAttribute('aria-expanded', isExpanded);
-    toggleBtn.innerHTML = isExpanded ? '✕' : '☰';
+    setMenuOpen(!navLinks.classList.contains('active'));
   });
 
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-      toggleBtn.innerHTML = '☰';
-    });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMenuOpen(false));
   });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && navLinks.classList.contains('active')) {
+      setMenuOpen(false);
+      toggleBtn.focus();
+    }
+  });
+
+  mobileMenuQuery.addEventListener('change', () => setMenuOpen(false));
 }
 
 /* --------------------------------------------------------------------------
@@ -416,12 +432,13 @@ function initSectionParticles() {
 
     const ctx = canvas.getContext('2d');
     let W, H, animId, time = 0;
+    let orbs = [];
 
     function resize() {
       W = canvas.width  = section.offsetWidth;
       H = canvas.height = section.offsetHeight;
       // Re-position orb bases on resize
-      orbs && orbs.forEach((o, i) => {
+      orbs.forEach((o, i) => {
         o.baseX = (W / (orbs.length + 1)) * (i + 1);
         o.baseY = (H / (orbs.length + 1)) * (i + 1);
       });
@@ -502,7 +519,7 @@ function initSectionParticles() {
       { r: 175, g: 162, b: 216, phase: 4.2 }
     ];
 
-    const orbs = ORB_DEFS.map((def, i) => ({
+    orbs = ORB_DEFS.map((def, i) => ({
       ...def,
       baseX: W / (ORB_DEFS.length + 1) * (i + 1),
       baseY: H / (ORB_DEFS.length + 1) * (i + 1),
