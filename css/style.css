@@ -5426,3 +5426,204 @@ body {
     min-height: 800px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Registration Now Banner (Replaces Countdown Timer)
+   -------------------------------------------------------------------------- */
+.registration-now-banner {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 540px;
+}
+
+.registration-now-card {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 1.25rem 2rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(106, 0, 215, 0.22);
+  box-shadow:
+    0 12px 36px -6px rgba(53, 0, 94, 0.14),
+    0 4px 16px -2px rgba(75, 0, 130, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+  transition:
+    transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.registration-now-card:hover {
+  transform: translateY(-4px) scale(1.015);
+  border-color: rgba(106, 0, 215, 0.45);
+  box-shadow:
+    0 20px 52px -8px rgba(53, 0, 94, 0.22),
+    0 8px 24px -2px rgba(106, 0, 215, 0.15),
+    0 0 0 3px rgba(106, 0, 215, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+.registration-now-card:active {
+  transform: translateY(-1px) scale(1.005);
+}
+
+/* Shimmer overlay animation */
+.registration-now-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(106, 0, 215, 0.06) 40%,
+    rgba(130, 65, 178, 0.1) 50%,
+    rgba(106, 0, 215, 0.06) 60%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: regNowShimmer 3s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+@keyframes regNowShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Content layout */
+.registration-now-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Pulsing live dot */
+.registration-now-live-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  animation: regNowPulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes regNowPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(34, 197, 94, 0.6); }
+  50%      { opacity: 0.55; box-shadow: 0 0 16px rgba(34, 197, 94, 0.85); }
+}
+
+/* "OPEN NOW" label */
+.registration-now-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* "REGISTRATION NOW" main title */
+.registration-now-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, #24003E 0%, #5200A3 35%, #6A00D7 70%, #540F4E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  flex: 1 1 auto;
+}
+
+/* Arrow icon */
+.registration-now-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--gradient-primary-btn);
+  color: #fff;
+  flex-shrink: 0;
+  transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 14px rgba(106, 0, 215, 0.3);
+}
+
+.registration-now-card:hover .registration-now-arrow {
+  transform: translateX(4px);
+}
+
+.registration-now-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .registration-now-banner {
+    margin-top: 1.5rem;
+    max-width: 100%;
+  }
+
+  .registration-now-card {
+    padding: 1rem 1.25rem;
+    border-radius: 14px;
+  }
+
+  .registration-now-title {
+    font-size: 1.2rem;
+  }
+
+  .registration-now-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .registration-now-arrow svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .registration-now-card {
+    padding: 0.85rem 1rem;
+  }
+
+  .registration-now-title {
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+
+  .registration-now-content {
+    gap: 0.5rem;
+  }
+
+  .registration-now-live-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .registration-now-label {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.45rem;
+  }
+}
