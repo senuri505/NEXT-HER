@@ -401,6 +401,7 @@ function initSectionParticles() {
   const sectionSelectors = [
     '.about-section',
     '.target-section',
+    '.prize-pool-section',
     '.poster-pillars-section',
     '.objectives-section',
     '.timeline-section',
@@ -679,4 +680,3 @@ function initSmoothScroll() {
     });
   });
 }
-

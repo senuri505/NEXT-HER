@@ -989,3 +989,49 @@ iframe {
     transition: none;
   }
 }
+@media (max-width: 900px) {
+  .prize-podium-grid {
+    gap: clamp(0.75rem, 2vw, 1.4rem);
+  }
+
+  .prize-podium-card--first {
+    min-height: 360px;
+  }
+
+  .prize-podium-card--second {
+    min-height: 310px;
+  }
+
+  .prize-podium-card--third {
+    min-height: 275px;
+  }
+}
+
+@media (max-width: 767px) {
+  .prize-podium-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    max-width: 28rem;
+  }
+
+  .prize-podium-card--first,
+  .prize-podium-card--second,
+  .prize-podium-card--third {
+    grid-column: 1;
+    grid-row: auto;
+    min-height: 0;
+  }
+
+  .prize-card-content {
+    min-height: 13.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .prize-podium-card--first .prize-card-content {
+    min-height: 15.5rem;
+  }
+
+  .prize-podium-base {
+    min-height: 3.2rem;
+  }
+}
