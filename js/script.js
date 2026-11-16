@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQAccordion();
   initSmoothScroll();
   initSectionParticles();
+  initRegistrationCountdown();
 });
 
 /* --------------------------------------------------------------------------
@@ -679,4 +680,69 @@ function initSmoothScroll() {
       });
     });
   });
+}
+
+/* --------------------------------------------------------------------------
+   11. Registration Closing Soon Countdown Timer (Asia/Colombo UTC+05:30)
+   Exact Deadline: 17 November 2026 at 12:00 AM Midnight (Asia/Colombo)
+   -------------------------------------------------------------------------- */
+function initRegistrationCountdown() {
+  // 17 November 2026 at 12:00 AM Midnight, Sri Lanka Standard Time (UTC+05:30)
+  const deadline = new Date('2026-11-17T00:00:00+05:30').getTime();
+
+  const daysEl = document.getElementById('cd-days');
+  const hoursEl = document.getElementById('cd-hours');
+  const minutesEl = document.getElementById('cd-minutes');
+  const secondsEl = document.getElementById('cd-seconds');
+  const timerContainer = document.getElementById('countdown-timer-container');
+  const heading = document.getElementById('countdown-heading');
+  const subLabel = document.getElementById('countdown-sub-label');
+  const liveDot = document.getElementById('countdown-live-dot');
+  const card = document.getElementById('countdown-card');
+
+  if (!daysEl && !timerContainer) return;
+
+  let countdownInterval = null;
+
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = deadline - now;
+
+    if (diff <= 0) {
+      if (countdownInterval) clearInterval(countdownInterval);
+      if (timerContainer) {
+        timerContainer.innerHTML = '<div class="countdown-closed-message">REGISTRATION CLOSED</div>';
+      }
+      if (heading) {
+        heading.textContent = 'REGISTRATION CLOSED';
+      }
+      if (subLabel) {
+        subLabel.textContent = 'CLOSED';
+      }
+      if (liveDot) {
+        liveDot.style.background = '#64748B';
+        liveDot.style.boxShadow = 'none';
+        liveDot.style.animation = 'none';
+      }
+      if (card) {
+        card.removeAttribute('href');
+        card.style.cursor = 'default';
+        card.removeAttribute('title');
+      }
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    if (daysEl) daysEl.textContent = String(days).padStart(2, '0');
+    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
+  }
+
+  updateCountdown();
+  countdownInterval = setInterval(updateCountdown, 1000);
 }
