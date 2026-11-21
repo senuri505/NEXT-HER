@@ -683,12 +683,12 @@ function initSmoothScroll() {
 }
 
 /* --------------------------------------------------------------------------
-   11. Registration Closing Soon Countdown Timer (Asia/Colombo UTC+05:30)
-   Exact Deadline: 17 November 2026 at 12:00 AM Midnight (Asia/Colombo)
+   11. Proposal Submission Countdown Timer (Asia/Colombo UTC+05:30)
+   Exact Deadline: 26 November 2026 at 11:59:00 PM (Asia/Colombo UTC+05:30)
    -------------------------------------------------------------------------- */
 function initRegistrationCountdown() {
-  // 17 November 2026 at 12:00 AM Midnight, Sri Lanka Standard Time (UTC+05:30)
-  const deadline = new Date('2026-11-17T00:00:00+05:30').getTime();
+  // Proposal Submission Closes: 26 November 2026 at 11:59:00 PM, Sri Lanka Standard Time (UTC+05:30)
+  const deadline = new Date('2026-11-26T23:59:00+05:30').getTime();
 
   const daysEl = document.getElementById('cd-days');
   const hoursEl = document.getElementById('cd-hours');
@@ -711,10 +711,10 @@ function initRegistrationCountdown() {
     if (diff <= 0) {
       if (countdownInterval) clearInterval(countdownInterval);
       if (timerContainer) {
-        timerContainer.innerHTML = '<div class="countdown-closed-message">REGISTRATION CLOSED</div>';
+        timerContainer.innerHTML = '<div class="countdown-closed-message">PROPOSAL SUBMISSION CLOSED</div>';
       }
       if (heading) {
-        heading.textContent = 'REGISTRATION CLOSED';
+        heading.textContent = 'PROPOSAL SUBMISSION CLOSED';
       }
       if (subLabel) {
         subLabel.textContent = 'CLOSED';
@@ -730,6 +730,17 @@ function initRegistrationCountdown() {
         card.removeAttribute('title');
       }
       return;
+    }
+
+    if (heading && heading.textContent !== 'PROPOSAL SUBMISSION CLOSES IN') {
+      heading.textContent = 'PROPOSAL SUBMISSION CLOSES IN';
+    }
+    if (subLabel && subLabel.textContent !== '26 November 2026') {
+      subLabel.textContent = '26 November 2026';
+    }
+    if (card && (!card.getAttribute('href') || card.getAttribute('href') !== '#register')) {
+      card.setAttribute('href', '#register');
+      card.setAttribute('title', 'Click to Submit Your Idea');
     }
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));

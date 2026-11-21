@@ -2095,6 +2095,37 @@ img, svg {
   letter-spacing: 1.5px;
 }
 
+.timeline-phase-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.timeline-status-badge.completed {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.24rem 0.65rem;
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #047857 !important;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.timeline-card .timeline-status-badge.completed {
+  color: #047857 !important;
+  background: rgba(16, 185, 129, 0.16);
+  border-color: rgba(16, 185, 129, 0.45);
+  text-shadow: none;
+}
+
 .timeline-title {
   font-size: 1.48rem;
   font-weight: 900;
